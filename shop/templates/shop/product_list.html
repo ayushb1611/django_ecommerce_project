@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Shopping</title>
+    <style>
+      h2 {
+        color: #000;
+        font-size: 26px;
+        font-weight: 300;
+        text-align: center;
+        text-transform: uppercase;
+        position: relative;
+        margin: 30px 0 60px;
+      }
+      h2::after {
+        content: "";
+        width: 100px;
+        position: absolute;
+        margin: 0 auto;
+        height: 4px;
+        border-radius: 1px;
+        background: #7ac400;
+        left: 0;
+        right: 0;
+        bottom: -20px;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <!-- Example Code -->
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/ownerindex">Shopping Products List
+          
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {% comment %} <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li> {% endcomment %}
+            <li class="nav-item">
+              <a class="nav-link" href="/add_products">Add Products</a>
+            </li>
+            {% comment %} <li class="nav-item">
+                <a class="nav-link" href="/product_list">Products List</a>
+              </li> {% endcomment %}
+              <li class="nav-item">
+                <a class="nav-link" href="/usercartlist">User Cart List</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/customer_data">Customer Data</a>
+              </li>
+          </ul>
+          <ul class="navbar-nav me-right mb-3 mb-lg-0">
+            <li class="nav-link active">
+              <b> User :</b> Owner
+             </li>
+            <li>
+              <a class="nav-link active" aria-current="page" href="/log__out">Logout</a>
+            </li>
+            <ul>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- End Example Code -->
+
+    <div class="col-lg-12 stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <form method="POST" action="" enctype="multipart/form-data"></form>
+          {% csrf_token %}
+          <b><h2>Product List</b></h2>
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+      </div>
+   
+          
+          <!-- <p class="card-description">
+            Add class <code>.table-{color}</code>
+          </p> -->
+          <div class="table-responsive pt-3">
+            <form>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  
+                  <th style="text-align:center">
+                    Product Name
+                  </th>
+                  <th style="text-align:center">
+                    Price
+                  </th>
+                  <th style="text-align:center">
+                    Product Description
+                  </th>
+                  <th style="text-align:center">
+                    Specification
+                  </th>
+                  <th style="text-align:center">
+                    Stock
+                  </th>
+
+                  <th style="text-align:center">
+                    Image
+                  </th>
+                  <th colspan="2" style="text-align:center">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-info">
+
+                  {% for product_list in product_list %}
+                  <td>{{product_list.product_name}}</td>
+                  <td>{{product_list.product_price}}</td>
+                  <td>{{product_list.product_description}}</td>
+                  <td>{{product_list.product_specifications}}</td>
+                  <td>{{product_list.product_stock}}</td>
+                  {% if product_list.product_image %}
+
+                    <td>
+                      {% comment %} <img src="{{product_list.product_image.url }}" alt="" class="prod-size"> {% endcomment %}
+                      <img src="{{product_list.product_image.url}}" alt=" " height="50px" width="50px"  >
+                    </td>
+                  {% else %}
+                    <td>+
+                        <img src="" alt="" class="prod-size">
+                    </td>
+                  {% endif %}
+
+                  <form action="{% url 'delete_product' product_list.id %}">
+                    <td><button type="submit" class="btn btn-light border btn-sm">Delete</button>
+                </form>
+                  
+                <form action="{% url 'update_product' product_list.id %}">
+                    
+
+                    </a><button type="submit" class="btn btn-light border btn-sm">Update</button></td>
+                </form>
+                
+
+                </tr>
+                {% endfor %}
+                
+
+
+
+
+                 
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+  </body>
+</html>

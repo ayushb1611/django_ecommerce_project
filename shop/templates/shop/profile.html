@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Shopping</title>
+    <style>
+        html, body.auth_class {
+            background: #f9f4ff;
+          }
+          h2 {
+            color: #000;
+            font-size: 26px;
+            font-weight: 300;
+            text-align: center;
+            text-transform: uppercase;
+            position: relative;
+            margin: 30px 0 60px;
+          }
+          h2::after {
+            content: "";
+            width: 100px;
+            position: absolute;
+            margin: 0 auto;
+            height: 4px;
+            border-radius: 1px;
+            background: #7ac400;
+            left: 0;
+            right: 0;
+            bottom: -20px;
+          }
+          .login-container {
+            margin-top: 10%;
+            border: 0px solid #CCD1D1;
+            border-radius: 12px;
+            box-shadow: 0 0px 28px 0 rgb(0 0 0 / 8%);
+            max-width: 50%;
+            background: #FFF;
+            z-index: 1;
+            position: relative;
+          }
+          img.triangleA {
+            position: absolute;
+            margin-left: -16px;
+            width: 60px;
+            border-radius: 12px 0px 0px 0px;
+          }
+          img.triangleB {
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            width: 360px;
+            z-index: 0;
+          }
+          .welcome_auth {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+          }
+          .auth_welcome a {
+            font-weight: 400;
+          }
+          .auth_welcome {
+            font-weight: 100;
+            font-size: 1.5em;
+            background: -webkit-linear-gradient( 45deg, #07dd97, #beffe7);
+            background-size: 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-color: black;
+            max-width: 170px;
+          }
+          a.auth_branding_in img {
+            width: 60px;
+            height: 60px;
+            border-radius: 1000px;
+          }
+          
+          .login-form {
+            background: #fbfbfb;
+            border-radius: 0px 12px 12px 0px;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+          }
+          .login_form_in {
+            padding: 4em 1em;
+          }
+          .login-form h1 {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #969696;
+            line-height: 1.5em;
+            padding: 1.2em 0px .8em;
+          }
+          .lni {
+            display: inline-block;
+            font: normal normal normal 1em/1 'LineIcons';
+            speak: none;
+            text-transform: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+          }
+          .google_signup {
+            margin-top: .8em;
+          }
+          .google_signup a {
+            background: #DB4437;
+            color: #FFF;
+            display: block;
+            text-align: center;
+            padding: 12px 4px;
+            border-radius: 5px;
+          }
+          .btn-primary {
+            color: #fff;
+            background-color: #5d00ff;
+            border-color: #5d00ff;
+          }
+          .btn-primary:hover {
+            color: #fff;
+            background-color: #2900b7;
+            border-color: #2900b7;
+          }
+          .google_signup a {
+            background: #DB4437;
+            color: #FFF;
+            display: block;
+            text-align: center;
+            padding: 12px 4px;
+            border-radius: 5px;
+          }
+          .google_signup a:hover {
+            background: #d81505;
+            color: #FFF;
+          }
+          .other_auth_links a:nth-child(2) {
+            float: right;
+          }
+          a {
+            text-decoration: none;
+            color: #afafaf;
+          }
+          a:hover {
+            text-decoration: none;
+            color: #616161;
+          }    
+          .alert-success {
+            background-color: rgb(190 255 231 / 33%);
+            color: #07dd97;
+            font-size: .9em;
+          }    
+      body{background:#eee}.ratings i{font-size: 16px;color: red}.strike-text{color: red;text-decoration: line-through}.product-image{width: 100%}.dot{height: 7px;width: 7px;margin-left: 6px;margin-right: 6px;margin-top: 3px;background-color: blue;border-radius: 50%;display: inline-block}.spec-1{color: #938787;font-size: 15px}h5{font-weight: 400}.para{font-size: 16px} 
+    </style>
+  
+    </head>
+    
+  <body>
+
+    <!-- Example Code -->
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/index/">Shopping          
+        </a>
+        <a class="navbar-brand" href="/index/">Home          
+        </a>
+        {% csrf_token %}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            
+          </ul>
+          <ul class="navbar-nav me-right mb-3 mb-lg-0">
+            <li class="nav-link active">
+             <b> User :</b> {{user.username}}
+            </li>
+            <li>
+              <a class="nav-link " aria-current="page" href="/about">About</a>
+            </li>
+           
+            
+          <li>
+            <a class="nav-link " aria-current="page" href="/log_out">Logout</a>
+          </li>
+          
+          </ul>
+ 
+        </div>
+    </div>
+  </nav>
+  <b><h2>{{user.username}}&nbsp; Profile</b></h2>
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+{% comment %}
+profiulepic
+name
+dob
+mobile
+email
+address
+{% endcomment %}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      
+      <div class="container">
+
+
+
+
+        <form method="POST" action="{% url 'profile' %}" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <img src="{{prof.profile_pic.url}}" height="200px" width="200px"><br><br>
+            <div class="form-group py-2">
+            <label>Image upload</label>
+            <input type="file" name="img[]" class="file-upload-default">
+            
+        </div>  
+        <div class="form-group py-2">
+            <label for="exampleInputName1">Enter Name</label>
+            <input type="text" class="form-control" id="name" value="{{prof.name}}" placeholder="Enter Name" name="name">
+        </div>
+        <div class="form-group py-2">
+            <label for="exampleInputDob">Enter DOB</label>
+            <input type="date" class="form-control" id="dob" value="{{prof.dob}}" placeholder="Enter DOB" name="dob" required>
+        </div>
+        <div class="form-group py-2">
+            <label for="exampleInputDob">DOB : -</label>{{prof.dob}}
+            {% comment %} <input type="date" class="form-control" id="dob" value="{{prof.dob}}" placeholder="Enter DOB" name="dob"> {% endcomment %}
+        </div>
+        <div class="form-group py-2">
+            <label for="exampleInputMobile">Enter Mobile number</label>
+            <input type="number" class="form-control" id="mobile_no" value="{{prof.mobile_no}}" placeholder="Enter Mobile number" name="mobile_no">
+        </div>
+        <div class="form-group py-2">
+            <label for="exampleInputEmail">Enter Email</label>
+            <input type="email" class="form-control" id="email" value="{{user.email}}" placeholder="Enter Email" name="email">
+        </div>
+        <div class="form-group py-2">
+            <label for="exampleInputEmail">Enter Address</label>
+            <input type="text" class="form-control" id="address" value="{{prof.address}}" placeholder="Enter Address" name="address">
+        </div>
+        
+        <div class="col-lg-3">
+            <input align="middle" type="submit" class="bbtn btn-primary btn-lg btn-block" name="submit" value="submit" >
+          </div>
+        
+        </form>
+
+
+
+        </body>
+        </html>
+
+
